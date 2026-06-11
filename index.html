@@ -163,10 +163,25 @@ function linkPlaces(text){
 function formatDay(day){
   return esc(day).replace(/\((.)\)/, "（$1）");
 }
-function groupSeqName(displayGroup, members){
+function normalizeTimeText(s){
+  return String(s || "").replace(/\b(\d{1,2}):(\d{2})\b/g, (_,h,m)=>`${String(Number(h)).padStart(2,"0")}:${m}`);
+}
+function timeSortValue(s){
+  const m = normalizeTimeText(s).match(/(\d{1,2}):(\d{2})/);
+  return m ? Number(m[1]) * 60 + Number(m[2]) : 99999;
+}
+function dateNoteSortValue(s){
+  s = String(s || "");
+  if(s.includes("前一天")) return 0;
+  if(s.includes("當天") || !s) return 1;
+  return 2;
+}
+function groupSeqName(displayGroup, members, mode="summary"){
   const num = (displayGroup || "").match(/(\d+)/)?.[1] || "";
   const driver = members.find(x=>x.role==="駕駛") || members[0];
-  return `${num ? num + ". " : ""}${memberName(driver.member_id)}組`;
+  const name = memberName(driver.member_id);
+  if(mode === "card") return `${num ? num + ". " : ""}${name} 車`;
+  return `${num ? num + ". " : ""}${name}組`;
 }
 function renderStats(){
   const mealCount = new Set(DATA.tables.map(t=>t.meal_id)).size;
@@ -197,13 +212,19 @@ function renderSchedule(){
 }
 function renderLocations(){$("locationList").innerHTML = DATA.locations.map(l=>`<a href="${esc(l.google_map)}" target="_blank">📍 ${esc(l.name)}</a>`).join("");}
 function renderTransport(){
+  DATA.transport.forEach(x=>{ x.time = normalizeTimeText(x.time); x.carrier = x.carrier || "未填"; x.date_note = x.date_note || "當天"; });
   const byDir=groupBy(DATA.transport, x=>x.direction || "未分類");
   $("transportList").innerHTML = Object.entries(byDir).map(([dir, rows])=>{
     const byType=groupBy(rows, x=>x.transport_type || "未分類");
     return `<div class="card"><h3>${esc(dir)}</h3>${Object.entries(byType).map(([type, rows2])=>{
-      const byGroup=groupBy(rows2, x=>`${x.date_note || "當天"}｜${x.carrier || "未填"}｜${x.time || "未填"}`);
-      return `<h3 class="small">${esc(type)}</h3>` + Object.entries(byGroup).map(([key, rs])=>{
+      const byGroup=groupBy(rows2, x=>`${x.date_note || "當天"}｜${x.carrier || "未填"}｜${normalizeTimeText(x.time) || "未填"}`);
+      const entries = Object.entries(byGroup).sort((a,b)=>{
+        const aa=a[0].split("｜"), bb=b[0].split("｜");
+        return dateNoteSortValue(aa[0])-dateNoteSortValue(bb[0]) || timeSortValue(aa[2])-timeSortValue(bb[2]) || aa[1].localeCompare(bb[1],"zh-Hant");
+      });
+      return `<h3 class="small">${esc(type)}</h3>` + entries.map(([key, rs])=>{
         const [dateNote, carrier, time] = key.split("｜");
+        rs.sort((a,b)=>(memberName(a.member_id)).localeCompare(memberName(b.member_id),"zh-Hant"));
         return `<details class="details">
           <summary><span>${esc(carrier)}｜${esc(dateNote)} ${esc(time)}</span><span class="small">${rs.length}人</span></summary>
           <div class="detail-body">
@@ -222,14 +243,14 @@ function renderScooter(){
     const byGroup=groupBy(rows, x=>x.ride_group_id);
     const groupCards = Object.entries(byGroup).map(([gid, rs])=>{
       const first=rs[0]||{};
-      const title = groupSeqName(first.display_group, rs);
+      const title = groupSeqName(first.display_group, rs, "card");
       const selectedInGroup = selectedMemberId && rs.some(r=>r.member_id===selectedMemberId);
       const drivers = rs.filter(r=>r.role==="駕駛");
       const passengers = rs.filter(r=>r.role!=="駕駛");
       return `<details class="details ${selectedInGroup?'highlight':''}">
         <summary><span>🛵 ${esc(title)}</span><span class="small">👥${rs.length}</span></summary>
         <div class="detail-body">
-          <div class="small">交通類型：${esc(first.traffic_type || "")}${first.carrier ? "｜"+esc(first.carrier) : ""}｜航班/船班時間：${esc(first.traffic_time || "")}${first.note ? "｜"+esc(first.note) : ""}</div>
+          <div class="small">交通類型：${esc(first.traffic_type || "")}${first.carrier ? "｜"+esc(first.carrier) : ""}｜時間：${esc(first.traffic_time || "")}${first.note ? "｜"+esc(first.note) : ""}</div>
           <div class="event-row"><span class="group-tag">駕駛</span>${drivers.length ? drivers.map(r=>chip(r.member_id)).join("") : "—"}</div>
           <div class="event-row"><span class="group-tag">乘客</span>${passengers.length ? passengers.map(r=>chip(r.member_id)).join("") : "—"}</div>
         </div>
@@ -296,7 +317,9 @@ function renderSummary(){
   </div>`;
 }
 function renderVersionLog(){
-  $("versionLog").innerHTML = DATA.version_logs.slice().reverse().map(l=>`<div class="card version-log"><b>${esc(l.version || l.log_id)}</b>｜${esc(l.date)}｜${esc(l.title)}<br>${esc(l.content || "")}</div>`).join("");
+  $("versionLog").innerHTML = `<details class="details"><summary><span>📝 版本更新紀錄</span><span class="small">${DATA.version_logs.length}筆</span></summary><div class="detail-body">` +
+    DATA.version_logs.slice().reverse().map(l=>`<div class="event-row version-log"><b>${esc(l.version || l.log_id)}</b>｜${esc(l.date)}｜${esc(l.title)}<br>${esc(l.content || "")}</div>`).join("") +
+    `</div></details>`;
 }
 function renderAll(){
   $("title").textContent=DATA.settings.activity_name;
