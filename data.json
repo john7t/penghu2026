@@ -5312,20 +5312,8 @@
   ],
   "schedule": [
     {
-      "schedule_id": "SCH001",
-      "date": "6/17 (三) D0",
-      "start_time": "",
-      "end_time": "",
-      "title": "前一天提早抵達澎湖",
-      "location": "澎湖機場/港口",
-      "type": "交通",
-      "dress_code": "",
-      "note": "依個人航班/船班時間",
-      "owner_member_id": ""
-    },
-    {
       "schedule_id": "SCH002",
-      "date": "6/18 (四) D1",
+      "date": "6/18 (四) Day1",
       "start_time": "08:00",
       "end_time": "13:00",
       "title": "自由活動，自行安排抵達",
@@ -5337,7 +5325,7 @@
     },
     {
       "schedule_id": "SCH003",
-      "date": "6/18 (四) D1",
+      "date": "6/18 (四) Day1",
       "start_time": "13:00",
       "end_time": "15:30",
       "title": "民宿玩水、唱歌",
@@ -5349,7 +5337,7 @@
     },
     {
       "schedule_id": "SCH004",
-      "date": "6/18 (四) D1",
+      "date": "6/18 (四) Day1",
       "start_time": "15:30",
       "end_time": "16:30",
       "title": "波斯大廳集合：四天行程導覽 + 成員介紹",
@@ -5361,7 +5349,7 @@
     },
     {
       "schedule_id": "SCH005",
-      "date": "6/18 (四) D1",
+      "date": "6/18 (四) Day1",
       "start_time": "18:00",
       "end_time": "",
       "title": "晚餐 — 日新餐廳 臨海樓",
@@ -5373,7 +5361,7 @@
     },
     {
       "schedule_id": "SCH006",
-      "date": "6/18 (四) D1",
+      "date": "6/18 (四) Day1",
       "start_time": "20:30",
       "end_time": "22:30",
       "title": "上船：小卷夜釣 + 賞花火",
@@ -5385,7 +5373,7 @@
     },
     {
       "schedule_id": "SCH007",
-      "date": "6/18 (四) D1",
+      "date": "6/18 (四) Day1",
       "start_time": "23:00",
       "end_time": "01:00",
       "title": "大廳活動",
@@ -5397,8 +5385,8 @@
     },
     {
       "schedule_id": "SCH008",
-      "date": "6/19 (五) D2",
-      "start_time": "",
+      "date": "6/19 (五) Day2",
+      "start_time": "上午",
       "end_time": "",
       "title": "民宿西南線：時裡沙灘、風櫃洞、情人灣",
       "location": "澎湖西南",
@@ -5409,8 +5397,8 @@
     },
     {
       "schedule_id": "SCH009",
-      "date": "6/19 (五) D2",
-      "start_time": "",
+      "date": "6/19 (五) Day2",
+      "start_time": "上午",
       "end_time": "",
       "title": "民宿東北線：龍門沙灘、奎壁山、摩西分海、南寮古厝",
       "location": "澎湖東北",
@@ -5421,7 +5409,7 @@
     },
     {
       "schedule_id": "SCH010",
-      "date": "6/19 (五) D2",
+      "date": "6/19 (五) Day2",
       "start_time": "11:00",
       "end_time": "13:00",
       "title": "跨海大橋、通梁古榕、鯨魚洞",
@@ -5433,7 +5421,7 @@
     },
     {
       "schedule_id": "SCH011",
-      "date": "6/19 (五) D2",
+      "date": "6/19 (五) Day2",
       "start_time": "13:00",
       "end_time": "14:00",
       "title": "午餐：小卷麵線、炒飯小吃",
@@ -5445,10 +5433,10 @@
     },
     {
       "schedule_id": "SCH012",
-      "date": "6/19 (五) D2",
+      "date": "6/19 (五) Day2",
       "start_time": "14:00",
       "end_time": "18:00",
-      "title": "西嶼景點：二崁聚落、大果葉玄武岩、西嶼砲台、漁翁島燈塔、外垵漁港、池西岩瀑、小池角雙曲橋",
+      "title": "二崁聚落、大果葉玄武岩、西嶼砲台、漁翁島燈塔、外垵漁港、池西岩瀑、小池角雙曲橋",
       "location": "西嶼",
       "type": "觀光",
       "dress_code": "花襯衫",
@@ -5457,7 +5445,7 @@
     },
     {
       "schedule_id": "SCH013",
-      "date": "6/19 (五) D2",
+      "date": "6/19 (五) Day2",
       "start_time": "18:50",
       "end_time": "",
       "title": "欣賞夕陽",
@@ -5469,7 +5457,7 @@
     },
     {
       "schedule_id": "SCH014",
-      "date": "6/19 (五) D2",
+      "date": "6/19 (五) Day2",
       "start_time": "20:00",
       "end_time": "",
       "title": "晚餐 — 澎湖山水夏日碳烤",
@@ -5481,7 +5469,7 @@
     },
     {
       "schedule_id": "SCH015",
-      "date": "6/19 (五) D2",
+      "date": "6/19 (五) Day2",
       "start_time": "22:00",
       "end_time": "",
       "title": "沙灘喝酒",
@@ -5493,7 +5481,7 @@
     },
     {
       "schedule_id": "SCH016",
-      "date": "6/20 (六) D3",
+      "date": "6/20 (六) Day3",
       "start_time": "09:35",
       "end_time": "10:15",
       "title": "前往碼頭 — 北海臨時遊客服務中心",
@@ -5505,7 +5493,7 @@
     },
     {
       "schedule_id": "SCH017",
-      "date": "6/20 (六) D3",
+      "date": "6/20 (六) Day3",
       "start_time": "10:30",
       "end_time": "17:00",
       "title": "離島水上活動 — 吉貝",
@@ -5517,7 +5505,7 @@
     },
     {
       "schedule_id": "SCH018",
-      "date": "6/20 (六) D3",
+      "date": "6/20 (六) Day3",
       "start_time": "17:30",
       "end_time": "19:00",
       "title": "市區逛 or 回民宿盥洗",
@@ -5529,7 +5517,7 @@
     },
     {
       "schedule_id": "SCH019",
-      "date": "6/20 (六) D3",
+      "date": "6/20 (六) Day3",
       "start_time": "19:00",
       "end_time": "20:30",
       "title": "晚餐 — 臨海樓",
@@ -5541,7 +5529,7 @@
     },
     {
       "schedule_id": "SCH020",
-      "date": "6/20 (六) D3",
+      "date": "6/20 (六) Day3",
       "start_time": "20:30",
       "end_time": "22:00",
       "title": "市區逛街、採買歐米阿給 free style",
@@ -5553,7 +5541,7 @@
     },
     {
       "schedule_id": "SCH021",
-      "date": "6/21 (日) D4",
+      "date": "6/21 (日) Day4",
       "start_time": "10:00",
       "end_time": "11:00",
       "title": "免稅店",
@@ -5565,7 +5553,7 @@
     },
     {
       "schedule_id": "SCH022",
-      "date": "6/21 (日) D4",
+      "date": "6/21 (日) Day4",
       "start_time": "",
       "end_time": "",
       "title": "各自回程",
@@ -5578,76 +5566,88 @@
   ],
   "locations": [
     {
-      "name": "北海碼頭",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%B5%B7%E7%A2%BC%E9%A0%AD%20%E6%BE%8E%E6%B9%96"
+      "name": "澎湖",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "吉貝嶼",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%90%89%E8%B2%9D%E5%B6%BC%20%E6%BE%8E%E6%B9%96"
+      "name": "自由活動",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%87%AA%E7%94%B1%E6%B4%BB%E5%8B%95%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "山水沙灘",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%B1%B1%E6%B0%B4%E6%B2%99%E7%81%98%20%E6%BE%8E%E6%B9%96"
-    },
-    {
-      "name": "日新餐廳 臨海樓",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%96%B0%E9%A4%90%E5%BB%B3%20%E8%87%A8%E6%B5%B7%E6%A8%93%20%E6%BE%8E%E6%B9%96"
+      "name": "自行安排抵達",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%87%AA%E8%A1%8C%E5%AE%89%E6%8E%92%E6%8A%B5%E9%81%94%20%E6%BE%8E%E6%B9%96"
     },
     {
       "name": "波斯卡朵",
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E6%96%AF%E5%8D%A1%E6%9C%B5%20%E6%BE%8E%E6%B9%96"
     },
     {
+      "name": "民宿玩水",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B0%91%E5%AE%BF%E7%8E%A9%E6%B0%B4%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "唱歌",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%94%B1%E6%AD%8C%20%E6%BE%8E%E6%B9%96"
+    },
+    {
       "name": "波斯卡朵 大廳",
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E6%96%AF%E5%8D%A1%E6%9C%B5%20%E5%A4%A7%E5%BB%B3%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "澎湖",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%20%E6%BE%8E%E6%B9%96"
+      "name": "波斯大廳集合",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E6%96%AF%E5%A4%A7%E5%BB%B3%E9%9B%86%E5%90%88%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "澎湖免稅店",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E5%85%8D%E7%A8%85%E5%BA%97%20%E6%BE%8E%E6%B9%96"
+      "name": "四天行程導覽",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%9B%9B%E5%A4%A9%E8%A1%8C%E7%A8%8B%E5%B0%8E%E8%A6%BD%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "澎湖山水夏日碳烤",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E5%B1%B1%E6%B0%B4%E5%A4%8F%E6%97%A5%E7%A2%B3%E7%83%A4%20%E6%BE%8E%E6%B9%96"
+      "name": "成員介紹",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%88%90%E5%93%A1%E4%BB%8B%E7%B4%B9%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "澎湖市區",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E5%B8%82%E5%8D%80%20%E6%BE%8E%E6%B9%96"
+      "name": "日新餐廳 臨海樓",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%96%B0%E9%A4%90%E5%BB%B3%20%E8%87%A8%E6%B5%B7%E6%A8%93%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "澎湖東北",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E6%9D%B1%E5%8C%97%20%E6%BE%8E%E6%B9%96"
-    },
-    {
-      "name": "澎湖海域",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E6%B5%B7%E5%9F%9F%20%E6%BE%8E%E6%B9%96"
-    },
-    {
-      "name": "澎湖西南",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E8%A5%BF%E5%8D%97%20%E6%BE%8E%E6%B9%96"
-    },
-    {
-      "name": "臨海樓",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%87%A8%E6%B5%B7%E6%A8%93%20%E6%BE%8E%E6%B9%96"
-    },
-    {
-      "name": "西嶼",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E5%B6%BC%20%E6%BE%8E%E6%B9%96"
-    },
-    {
-      "name": "波斯卡朵親子城堡渡假民宿",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E6%96%AF%E5%8D%A1%E6%9C%B5%E8%A6%AA%E5%AD%90%E5%9F%8E%E5%A0%A1%E6%B8%A1%E5%81%87%E6%B0%91%E5%AE%BF%20%E6%BE%8E%E6%B9%96"
+      "name": "晚餐",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%99%9A%E9%A4%90%20%E6%BE%8E%E6%B9%96"
     },
     {
       "name": "日新餐廳",
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%96%B0%E9%A4%90%E5%BB%B3%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "北海臨時遊客服務中心",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%B5%B7%E8%87%A8%E6%99%82%E9%81%8A%E5%AE%A2%E6%9C%8D%E5%8B%99%E4%B8%AD%E5%BF%83%20%E6%BE%8E%E6%B9%96"
+      "name": "臨海樓",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%87%A8%E6%B5%B7%E6%A8%93%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖海域",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E6%B5%B7%E5%9F%9F%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "上船",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E4%B8%8A%E8%88%B9%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "小卷夜釣",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E5%8D%B7%E5%A4%9C%E9%87%A3%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "賞花火",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%B3%9E%E8%8A%B1%E7%81%AB%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "大廳活動",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E5%BB%B3%E6%B4%BB%E5%8B%95%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖西南",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E8%A5%BF%E5%8D%97%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "民宿西南線",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B0%91%E5%AE%BF%E8%A5%BF%E5%8D%97%E7%B7%9A%20%E6%BE%8E%E6%B9%96"
     },
     {
       "name": "時裡沙灘",
@@ -5662,20 +5662,36 @@
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%83%85%E4%BA%BA%E7%81%A3%20%E6%BE%8E%E6%B9%96"
     },
     {
+      "name": "澎湖東北",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E6%9D%B1%E5%8C%97%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "民宿東北線",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B0%91%E5%AE%BF%E6%9D%B1%E5%8C%97%E7%B7%9A%20%E6%BE%8E%E6%B9%96"
+    },
+    {
       "name": "龍門沙灘",
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E9%BE%8D%E9%96%80%E6%B2%99%E7%81%98%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "奎壁山摩西分海",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%A5%8E%E5%A3%81%E5%B1%B1%E6%91%A9%E8%A5%BF%E5%88%86%E6%B5%B7%20%E6%BE%8E%E6%B9%96"
+      "name": "奎壁山",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%A5%8E%E5%A3%81%E5%B1%B1%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "摩西分海",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%91%A9%E8%A5%BF%E5%88%86%E6%B5%B7%20%E6%BE%8E%E6%B9%96"
     },
     {
       "name": "南寮古厝",
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E5%AF%AE%E5%8F%A4%E5%8E%9D%20%E6%BE%8E%E6%B9%96"
     },
     {
-      "name": "澎湖跨海大橋",
-      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E8%B7%A8%E6%B5%B7%E5%A4%A7%E6%A9%8B%20%E6%BE%8E%E6%B9%96"
+      "name": "西嶼",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E5%B6%BC%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "跨海大橋",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E8%B7%A8%E6%B5%B7%E5%A4%A7%E6%A9%8B%20%E6%BE%8E%E6%B9%96"
     },
     {
       "name": "通梁古榕",
@@ -5684,6 +5700,18 @@
     {
       "name": "鯨魚洞",
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E9%AF%A8%E9%AD%9A%E6%B4%9E%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "午餐",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%8D%88%E9%A4%90%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "小卷麵線",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E5%8D%B7%E9%BA%B5%E7%B7%9A%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "炒飯小吃",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E7%82%92%E9%A3%AF%E5%B0%8F%E5%90%83%20%E6%BE%8E%E6%B9%96"
     },
     {
       "name": "二崁聚落",
@@ -5714,8 +5742,120 @@
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E6%B1%A0%E8%A7%92%E9%9B%99%E6%9B%B2%E6%A9%8B%20%E6%BE%8E%E6%B9%96"
     },
     {
+      "name": "欣賞夕陽",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%AC%A3%E8%B3%9E%E5%A4%95%E9%99%BD%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖山水夏日碳烤",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E5%B1%B1%E6%B0%B4%E5%A4%8F%E6%97%A5%E7%A2%B3%E7%83%A4%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "山水沙灘",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%B1%B1%E6%B0%B4%E6%B2%99%E7%81%98%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "沙灘喝酒",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B2%99%E7%81%98%E5%96%9D%E9%85%92%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "北海碼頭",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%B5%B7%E7%A2%BC%E9%A0%AD%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "前往碼頭",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%89%8D%E5%BE%80%E7%A2%BC%E9%A0%AD%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "北海臨時遊客服務中心",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%B5%B7%E8%87%A8%E6%99%82%E9%81%8A%E5%AE%A2%E6%9C%8D%E5%8B%99%E4%B8%AD%E5%BF%83%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "吉貝嶼",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%90%89%E8%B2%9D%E5%B6%BC%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "離島水上活動",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E9%9B%A2%E5%B3%B6%E6%B0%B4%E4%B8%8A%E6%B4%BB%E5%8B%95%20%E6%BE%8E%E6%B9%96"
+    },
+    {
       "name": "吉貝",
       "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%90%89%E8%B2%9D%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖市區/波斯卡朵",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E5%B8%82%E5%8D%80/%E6%B3%A2%E6%96%AF%E5%8D%A1%E6%9C%B5%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "市區逛",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%B8%82%E5%8D%80%E9%80%9B%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "or",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=or%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "回民宿盥洗",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%9B%9E%E6%B0%91%E5%AE%BF%E7%9B%A5%E6%B4%97%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖市區",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E5%B8%82%E5%8D%80%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "市區逛街",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%B8%82%E5%8D%80%E9%80%9B%E8%A1%97%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "採買歐米阿給",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%8E%A1%E8%B2%B7%E6%AD%90%E7%B1%B3%E9%98%BF%E7%B5%A6%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "free",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=free%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "style",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=style%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖免稅店",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E5%85%8D%E7%A8%85%E5%BA%97%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "免稅店",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%85%8D%E7%A8%85%E5%BA%97%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖機場/港口",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E6%A9%9F%E5%A0%B4/%E6%B8%AF%E5%8F%A3%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "各自回程",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%90%84%E8%87%AA%E5%9B%9E%E7%A8%8B%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "波斯卡朵親子城堡渡假民宿",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E6%96%AF%E5%8D%A1%E6%9C%B5%E8%A6%AA%E5%AD%90%E5%9F%8E%E5%A0%A1%E6%B8%A1%E5%81%87%E6%B0%91%E5%AE%BF%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "澎湖機場",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E6%BE%8E%E6%B9%96%E6%A9%9F%E5%A0%B4%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "馬公港",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E9%A6%AC%E5%85%AC%E6%B8%AF%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "奎壁山摩西分海",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%A5%8E%E5%A3%81%E5%B1%B1%E6%91%A9%E8%A5%BF%E5%88%86%E6%B5%B7%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "大果葉",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E6%9E%9C%E8%91%89%20%E6%BE%8E%E6%B9%96"
+    },
+    {
+      "name": "玄武岩",
+      "google_map": "https://www.google.com/maps/search/?api=1&query=%E7%8E%84%E6%AD%A6%E5%B2%A9%20%E6%BE%8E%E6%B9%96"
     }
   ],
   "version_logs": [

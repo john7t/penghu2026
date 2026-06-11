@@ -33,8 +33,11 @@ h3{font-size:20px;margin:0 0 8px}
 .small{font-size:13px;color:var(--muted)}
 .notice{background:var(--sun);border-left:5px solid var(--sun-border)}
 .map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.map-grid a{display:block;background:white;border:1px solid var(--line);border-radius:14px;padding:12px;color:var(--deep);font-weight:800;text-decoration:none}
-.room-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}
+.map-grid a,.maplink{color:var(--deep);font-weight:800;text-decoration:none;border-bottom:1px dotted #0ea5e9}
+.map-grid a{display:block;background:white;border:1px solid var(--line);border-radius:14px;padding:12px}
+.room-head,.day-head{display:flex;justify-content:space-between;gap:12px;font-weight:900;align-items:flex-start}
+.day-head h3{margin:0}
+.dress{white-space:nowrap;background:#e0f2fe;color:#075985;border-radius:999px;padding:5px 9px;font-size:13px;font-weight:900}
 .floor{color:var(--deep);white-space:nowrap}
 .people-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .chip{display:inline-flex;align-items:center;border:1px solid var(--line);background:#f8fafc;border-radius:999px;padding:7px 10px;font-size:14px}
@@ -71,7 +74,7 @@ h3{font-size:20px;margin:0 0 8px}
   .room-head{font-size:15px;align-items:center}
   .card{padding:14px;border-radius:16px}
 }
-@media (max-width:390px){.map-grid{grid-template-columns:1fr}.floor{font-size:13px}}
+@media (max-width:390px){.map-grid{grid-template-columns:1fr}.floor{font-size:13px}.dress{font-size:12px}}
 </style>
 </head>
 <body>
@@ -100,12 +103,12 @@ h3{font-size:20px;margin:0 0 8px}
 
 <section><div class="grid" id="stats"></div></section>
 <section id="schedule"><h2>🗓️ 行程</h2><div id="scheduleList"></div></section>
-<section id="locations"><h2>📍 地點導航</h2><div class="map-grid" id="locationList"></div></section>
-<section id="transport"><h2>✈️ 交通</h2><p class="small">依方向、交通方式與時段整理。點開可查看完整人員。</p><div id="transportList"></div></section>
+<section id="transport"><h2>✈️ 交通</h2><p class="small">同航空公司、同時間已合併顯示。</p><div id="transportList"></div></section>
 <section id="scooter"><h2>🛵 機車</h2><div class="card notice" id="scooterNotice"></div><div id="scooterList"></div></section>
 <section id="room"><h2>🏠 房間</h2><div id="roomList"></div></section>
 <section id="table"><h2>🍴 桌次</h2><div id="tableList"></div></section>
 <section id="team"><h2>👥 Team（暫訂）</h2><div class="card notice">目前僅作為人員分組參考，後續可能依活動內容進行調整。</div><div id="teamList"></div></section>
+<section id="locations"><h2>📍 地點導航總表</h2><div class="map-grid" id="locationList"></div></section>
 <section id="person">
   <h2>👤 個人查詢</h2>
   <div class="card">
@@ -140,7 +143,31 @@ function chip(id, extra=""){
 function stat(label, value){return `<div class="card stat"><b>${esc(value)}</b><span>${esc(label)}</span></div>`}
 function groupBy(arr, fn){return arr.reduce((a,x)=>{const k=fn(x); (a[k] ||= []).push(x); return a}, {})}
 function roomNo(roomName, roomId){const m=(roomName||"").match(/(\d{3,4})/); if(m)return m[1]; const id=(roomId||"").match(/(\d{3,4})$/); return id?id[1]:roomId;}
-
+function mapUrl(name){
+  const exact = DATA.locations.find(l => l.name === name);
+  if(exact) return exact.google_map;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + " 澎湖")}`;
+}
+function mapLink(name){return `<a class="maplink" target="_blank" href="${esc(mapUrl(name))}">${esc(name)}</a>`}
+function linkPlaces(text){
+  if(!text) return "";
+  let out = esc(text);
+  const names = DATA.locations.map(x=>x.name).filter(n=>n.length>=2).sort((a,b)=>b.length-a.length);
+  for(const n of names){
+    const safe = esc(n);
+    const re = new RegExp(safe.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+    out = out.replace(re, `<a class="maplink" target="_blank" href="${esc(mapUrl(n))}">${safe}</a>`);
+  }
+  return out;
+}
+function formatDay(day){
+  return esc(day).replace(/\((.)\)/, "（$1）");
+}
+function groupSeqName(displayGroup, members){
+  const num = (displayGroup || "").match(/(\d+)/)?.[1] || "";
+  const driver = members.find(x=>x.role==="駕駛") || members[0];
+  return `${num ? num + ". " : ""}${memberName(driver.member_id)}組`;
+}
 function renderStats(){
   const mealCount = new Set(DATA.tables.map(t=>t.meal_id)).size;
   const rideGroups = new Set(DATA.scooter.map(s=>s.ride_group_id)).size;
@@ -155,32 +182,35 @@ function renderStats(){
 }
 function renderSchedule(){
   const groups = groupBy(DATA.schedule, x=>x.date || "未分類");
-  $("scheduleList").innerHTML = Object.entries(groups).map(([day, rows])=>`
-    <div class="card"><h3>${esc(day)}</h3>
-      ${rows.map(r=>`<div class="event-row"><b>${esc(r.start_time || "")}${r.end_time ? "–"+esc(r.end_time) : ""}</b>｜${esc(r.title)}<br>
-      <span class="small">📍 ${esc(r.location || "未定")}｜${esc(r.type || "")}${r.dress_code ? "｜Dress Code："+esc(r.dress_code) : ""}${r.note ? "｜"+esc(r.note) : ""}</span></div>`).join("")}
-    </div>`).join("");
+  $("scheduleList").innerHTML = Object.entries(groups).map(([day, rows])=>{
+    const dress = rows.find(r=>r.dress_code)?.dress_code || "";
+    return `<div class="card">
+      <div class="day-head"><h3>${formatDay(day)}</h3>${dress ? `<span class="dress">👕 ${esc(dress)}</span>` : ""}</div>
+      ${rows.map(r=>{
+        const time = r.start_time ? `${esc(r.start_time)}${r.end_time ? "–"+esc(r.end_time) : ""}` : "";
+        return `<div class="event-row"><b>${time ? time + "｜" : ""}${linkPlaces(r.title)}</b><br>
+          <span class="small">📍 ${linkPlaces(r.location || "未定")}｜${esc(r.type || "")}${r.note ? "｜"+linkPlaces(r.note) : ""}</span>
+        </div>`;
+      }).join("")}
+    </div>`;
+  }).join("");
 }
 function renderLocations(){$("locationList").innerHTML = DATA.locations.map(l=>`<a href="${esc(l.google_map)}" target="_blank">📍 ${esc(l.name)}</a>`).join("");}
-function timeBucket(t){
-  if(!t) return "未填時間";
-  if(t.includes("前一天")) return "前一天";
-  const m=t.match(/(\d{1,2}):/); if(m){const h=+m[1]; return `${String(h).padStart(2,'0')}:00–${String(h+1).padStart(2,'0')}:00`;}
-  return t;
-}
 function renderTransport(){
   const byDir=groupBy(DATA.transport, x=>x.direction || "未分類");
   $("transportList").innerHTML = Object.entries(byDir).map(([dir, rows])=>{
     const byType=groupBy(rows, x=>x.transport_type || "未分類");
     return `<div class="card"><h3>${esc(dir)}</h3>${Object.entries(byType).map(([type, rows2])=>{
-      const byBucket=groupBy(rows2, x=>`${x.date_note || ""} ${timeBucket(x.time)}`.trim());
-      return `<h3 class="small">${esc(type)}</h3>` + Object.entries(byBucket).map(([bucket, rs])=>`
-        <details class="details"><summary><span>${esc(type)}｜${esc(bucket)}</span><span class="small">${rs.length}人</span></summary>
-        <div class="detail-body">${rs.sort((a,b)=>String(a.time).localeCompare(String(b.time))).map(r=>`
-          <div class="event-row ${isSel(r.member_id)?'highlight':''}">
-            <span class="group-tag">${esc(r.time || "-")}</span>${chip(r.member_id)}
-            <div class="small">${esc(r.carrier || "")}${r.note ? "｜"+esc(r.note) : ""}</div>
-          </div>`).join("")}</div></details>`).join("");
+      const byGroup=groupBy(rows2, x=>`${x.date_note || "當天"}｜${x.carrier || "未填"}｜${x.time || "未填"}`);
+      return `<h3 class="small">${esc(type)}</h3>` + Object.entries(byGroup).map(([key, rs])=>{
+        const [dateNote, carrier, time] = key.split("｜");
+        return `<details class="details">
+          <summary><span>${esc(carrier)}｜${esc(dateNote)} ${esc(time)}</span><span class="small">${rs.length}人</span></summary>
+          <div class="detail-body">
+            <div class="people-list">${rs.map(r=>chip(r.member_id)).join("")}</div>
+          </div>
+        </details>`;
+      }).join("");
     }).join("")}</div>`;
   }).join("");
 }
@@ -192,14 +222,16 @@ function renderScooter(){
     const byGroup=groupBy(rows, x=>x.ride_group_id);
     const groupCards = Object.entries(byGroup).map(([gid, rs])=>{
       const first=rs[0]||{};
+      const title = groupSeqName(first.display_group, rs);
       const selectedInGroup = selectedMemberId && rs.some(r=>r.member_id===selectedMemberId);
+      const drivers = rs.filter(r=>r.role==="駕駛");
+      const passengers = rs.filter(r=>r.role!=="駕駛");
       return `<details class="details ${selectedInGroup?'highlight':''}">
-        <summary><span>🛵 ${esc(first.display_group || "共乘組")}｜航班/船班時間：${esc(first.traffic_time || "")}</span><span class="small">${rs.length}人</span></summary>
+        <summary><span>🛵 ${esc(title)}</span><span class="small">👥${rs.length}</span></summary>
         <div class="detail-body">
-          <div class="small">交通類型：${esc(first.traffic_type || "")}${first.carrier ? "｜"+esc(first.carrier) : ""}${first.note ? "｜"+esc(first.note) : ""}</div>
-          ${rs.map(r=>`<div class="event-row ${isSel(r.member_id)?'highlight':''}">
-            <span class="group-tag">${esc(r.role || "成員")}</span>${chip(r.member_id)}
-          </div>`).join("")}
+          <div class="small">交通類型：${esc(first.traffic_type || "")}${first.carrier ? "｜"+esc(first.carrier) : ""}｜航班/船班時間：${esc(first.traffic_time || "")}${first.note ? "｜"+esc(first.note) : ""}</div>
+          <div class="event-row"><span class="group-tag">駕駛</span>${drivers.length ? drivers.map(r=>chip(r.member_id)).join("") : "—"}</div>
+          <div class="event-row"><span class="group-tag">乘客</span>${passengers.length ? passengers.map(r=>chip(r.member_id)).join("") : "—"}</div>
         </div>
       </details>`;
     }).join("");
@@ -249,8 +281,9 @@ function renderSummary(){
   const seat=DATA.tables.filter(t=>t.member_id===m.member_id);
   const scooterSummary = scs.map(x=>{
     const group=DATA.scooter.filter(s=>s.ride_group_id===x.ride_group_id);
+    const groupName = groupSeqName(x.display_group, group);
     const names=group.map(g=>memberName(g.member_id)).join("、");
-    return `${esc(x.direction)}｜${esc(x.display_group)}｜航班/船班時間：${esc(x.traffic_time)}｜你是${esc(x.role)}<br><span class="small">同組：${esc(names)}</span>`;
+    return `${esc(x.direction)}｜${esc(groupName)}<br><span class="small">同組：${esc(names)}</span>`;
   }).join("<br>");
   box.classList.add("active");
   box.innerHTML=`<div class="summary-grid">
@@ -269,7 +302,7 @@ function renderAll(){
   $("title").textContent=DATA.settings.activity_name;
   $("activityDate").textContent=DATA.settings.activity_date+"｜澎湖離島";
   $("footerText").textContent=DATA.settings.footer_text;
-  renderStats();renderSchedule();renderLocations();renderTransport();renderScooter();renderRooms();renderTables();renderTeams();renderPeopleButtons();renderSummary();renderVersionLog();
+  renderStats();renderSchedule();renderTransport();renderScooter();renderRooms();renderTables();renderTeams();renderLocations();renderPeopleButtons();renderSummary();renderVersionLog();
 }
 function setPerson(id){selectedMemberId=id;localStorage.setItem("penghuSelectedMemberId",id);renderAll();location.hash="#person";}
 function clearPerson(){selectedMemberId="";localStorage.removeItem("penghuSelectedMemberId");renderAll();}
